@@ -19,7 +19,7 @@ public class TimeClinet {
         PrintWriter out = null;
 
         try{
-            for (int i = 0; i <10000000; i++) {
+            for (int i = 0; i <10; i++) {
 
                 socket = new Socket("127.0.0.1", port);
 
