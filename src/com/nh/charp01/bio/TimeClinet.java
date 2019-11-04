@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class TimeClinet {
     public static void main(String[] args) {
@@ -18,17 +19,22 @@ public class TimeClinet {
         PrintWriter out = null;
 
         try{
-            socket = new Socket("127.0.0.1",port);
+            for (int i = 0; i <10000000; i++) {
 
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(),true);
+                socket = new Socket("127.0.0.1", port);
 
-            out.println("QUERY TIME OVER");
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                out = new PrintWriter(socket.getOutputStream(), true);
 
-            System.out.println("Send order  2 server succeed.");
+                out.println("QUERY TIME OVER");
 
-            String resp = in.readLine();
-            System.out.println("Now is "+ resp);
+                System.out.println("Send order  2 server succeed.");
+
+
+                String resp = in.readLine();
+                System.out.println("Now is " + resp);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
